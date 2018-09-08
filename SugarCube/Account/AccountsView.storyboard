@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,31 +14,89 @@
         <!--View Controller-->
         <scene sceneID="BZS-e3-Jl9">
             <objects>
-                <viewController id="bWm-Yq-hua" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bQf-xq-hdX" customClass="AccountsViewController">
+                <viewController id="bWm-Yq-hua" userLabel="View Controller" customClass="AccountsController" customModule="SugarCube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQf-xq-hdX" userLabel="View" customClass="AccountsViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QH4-vS-1gD">
-                                <rect key="frame" x="125" y="260" width="124" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login with Google"/>
-                                <connections>
-                                    <segue destination="BMF-Pw-QcJ" kind="show" id="XMe-Yl-Nfv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrC-G1-v89">
-                                <rect key="frame" x="163" y="298" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mPG-II-KlB">
+                                <rect key="frame" x="19" y="274" width="337.5" height="165"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-pj-XSt">
+                                        <rect key="frame" x="0.0" y="0.0" width="337.5" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLG-3r-jcQ" userLabel="Email ">
+                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxb-cs-0em" userLabel="Email Input Field">
+                                                <rect key="frame" x="56.5" y="0.0" width="281" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zlq-mR-exa">
+                                        <rect key="frame" x="0.0" y="45" width="337.5" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cP-sd-zrr">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PRo-xJ-C35">
+                                                <rect key="frame" x="89.5" y="0.0" width="248" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="PRo-xJ-C35" firstAttribute="top" secondItem="zlq-mR-exa" secondAttribute="top" id="3zF-YC-nma"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QH4-vS-1gD">
+                                        <rect key="frame" x="0.0" y="90" width="337.5" height="30"/>
+                                        <state key="normal" title="Login with Google"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrC-G1-v89">
+                                        <rect key="frame" x="0.0" y="135" width="337.5" height="30"/>
+                                        <state key="normal" title="Logout"/>
+                                    </button>
+                                </subviews>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
+                                <gestureRecognizers/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="mPG-II-KlB" firstAttribute="top" secondItem="WDx-zN-8De" secondAttribute="top" constant="254" id="1dy-Ou-peg"/>
+                            <constraint firstItem="mPG-II-KlB" firstAttribute="centerX" secondItem="bQf-xq-hdX" secondAttribute="centerX" id="ivy-xB-Eb8"/>
+                            <constraint firstItem="mPG-II-KlB" firstAttribute="width" secondItem="WDx-zN-8De" secondAttribute="width" multiplier="0.9" id="mvj-Qv-y6k"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WDx-zN-8De"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="K1O-XB-tyn" appends="YES" id="dhe-b0-iXH"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="EMAIL_FIELD" destination="tLG-3r-jcQ" id="zng-8C-Kll"/>
+                        <outlet property="EMAIL_PASSWORD_FIELDS" destination="8qb-pj-XSt" id="rY8-r9-1MO"/>
+                        <outlet property="LOGINBUTTON" destination="QH4-vS-1gD" id="hUg-so-UHc"/>
+                        <outlet property="PASSWORD_FIELD" destination="Jxb-cs-0em" id="t3B-Z6-L5v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTl-lv-910" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="K1O-XB-tyn">
+                    <connections>
+                        <segue destination="BMF-Pw-QcJ" kind="show" id="xmh-JO-ryd"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-9" y="90"/>
         </scene>
@@ -47,7 +106,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="BMF-Pw-QcJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yN-7K-GKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="65"/>
+            <point key="canvasLocation" x="337" y="174"/>
         </scene>
     </scenes>
 </document>

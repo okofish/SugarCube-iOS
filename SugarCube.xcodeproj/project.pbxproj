@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30635CD221436CDA001EC7AD /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30635CD121436CDA001EC7AD /* AccountsController.swift */; };
 		30635CD421436D03001EC7AD /* AccountsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30635CD321436D03001EC7AD /* AccountsView.storyboard */; };
+		30635CD821442060001EC7AD /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30635CD721442060001EC7AD /* AccountsController.swift */; };
 		88FF7E862143324100D541EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E852143324100D541EF /* AppDelegate.swift */; };
 		88FF7E882143324100D541EF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E872143324100D541EF /* art.scnassets */; };
 		88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E892143324100D541EF /* ARViewController.swift */; };
@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30635CD121436CDA001EC7AD /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
 		30635CD321436D03001EC7AD /* AccountsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountsView.storyboard; sourceTree = "<group>"; };
+		30635CD721442060001EC7AD /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
 		88FF7E822143324100D541EF /* SugarCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugarCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FF7E852143324100D541EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88FF7E872143324100D541EF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				30635CD321436D03001EC7AD /* AccountsView.storyboard */,
-				30635CD121436CDA001EC7AD /* AccountsController.swift */,
+				30635CD721442060001EC7AD /* AccountsController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 			files = (
 				88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */,
 				88FF7E862143324100D541EF /* AppDelegate.swift in Sources */,
-				30635CD221436CDA001EC7AD /* AccountsController.swift in Sources */,
+				30635CD821442060001EC7AD /* AccountsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

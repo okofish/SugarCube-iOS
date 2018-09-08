@@ -9,16 +9,23 @@
 import UIKit
 import SceneKit
 import ARKit
+import Vision
 
-class ARViewController: UIViewController, ARSCNViewDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    var currentBuffer: CVPixelBuffer?
+    
+    let visionQueue = DispatchQueue(label: "ws.jesse.SugarCube.serialVisionQueue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
+        
+        sceneView.session.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -63,6 +70,15 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
+            return
+        }
+        
+        self.currentBuffer = frame.capturedImage
+        recognizeCurrentImage()
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         
@@ -76,5 +92,40 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    lazy var classificationRequest: VNDetectBarcodesRequest = {
+        let request = VNDetectBarcodesRequest() { (finishedRequest, error) in
+            self.processClassifications(for: finishedRequest, error: error)
+        }
+        // Use CPU for Vision processing to ensure that there are adequate GPU resources for rendering.
+        //request.usesCPUOnly = true
+        
+        return request
+    }()
+    
+    func recognizeCurrentImage() {
+        //let orientation = UIDevice.current.orientati as! CGImagePropertyOrientation
+        
+        let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer!)
+        visionQueue.async {
+            do {
+                // Release the pixel buffer when done, allowing the next buffer to be processed.
+                defer { self.currentBuffer = nil }
+                try requestHandler.perform([self.classificationRequest])
+            } catch {
+                print("Error: Vision request failed with error \"\(error)\"")
+            }
+        }
+    }
+    
+    func processClassifications(for request: VNRequest, error: Error?) {
+        if let results = request.results as? [VNBarcodeObservation], let observation = results.first {
+            print(observation.payloadStringValue)
+        }
+        
+        /*DispatchQueue.main.async { [weak self] in
+            self?.displayClassifierResults()
+        }*/
     }
 }

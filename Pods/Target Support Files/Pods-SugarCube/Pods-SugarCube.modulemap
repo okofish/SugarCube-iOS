@@ -1,0 +1,6 @@
+framework module Pods_SugarCube {
+  umbrella header "Pods-SugarCube-umbrella.h"
+
+  export *
+  module * { export * }
+}

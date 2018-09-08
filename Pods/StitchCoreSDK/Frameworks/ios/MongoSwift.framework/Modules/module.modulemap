@@ -1,0 +1,4 @@
+framework module MongoSwift {
+        header "MongoSwift.h"
+        requires objc
+        }

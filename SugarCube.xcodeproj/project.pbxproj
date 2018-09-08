@@ -16,9 +16,11 @@
 		88FF7E8F2143324300D541EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E8E2143324300D541EF /* Assets.xcassets */; };
 		88FF7E922143324300D541EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E902143324300D541EF /* LaunchScreen.storyboard */; };
 		88FF7E9A214349A300D541EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E99214349A300D541EF /* Main.storyboard */; };
+		E3142E6E276424141AA56861 /* Pods_SugarCube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9309C9D1BC97C1DD8709B4 /* Pods_SugarCube.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22708875A5A55188B20CC245 /* Pods-SugarCube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SugarCube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SugarCube/Pods-SugarCube.debug.xcconfig"; sourceTree = "<group>"; };
 		30635CD321436D03001EC7AD /* AccountsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountsView.storyboard; sourceTree = "<group>"; };
 		30635CD721442060001EC7AD /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
 		88FF7E822143324100D541EF /* SugarCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugarCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +32,8 @@
 		88FF7E912143324300D541EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88FF7E932143324300D541EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88FF7E99214349A300D541EF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BD9309C9D1BC97C1DD8709B4 /* Pods_SugarCube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SugarCube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B0D8AD335BD48657E0BADC /* Pods-SugarCube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SugarCube.release.xcconfig"; path = "Pods/Target Support Files/Pods-SugarCube/Pods-SugarCube.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3142E6E276424141AA56861 /* Pods_SugarCube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,11 +57,30 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		7D336A7ED5B26C6BD2539033 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD9309C9D1BC97C1DD8709B4 /* Pods_SugarCube.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86CBBFA6F724E1394BDAD761 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22708875A5A55188B20CC245 /* Pods-SugarCube.debug.xcconfig */,
+				C5B0D8AD335BD48657E0BADC /* Pods-SugarCube.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		88FF7E792143324100D541EF = {
 			isa = PBXGroup;
 			children = (
 				88FF7E842143324100D541EF /* SugarCube */,
 				88FF7E832143324100D541EF /* Products */,
+				86CBBFA6F724E1394BDAD761 /* Pods */,
+				7D336A7ED5B26C6BD2539033 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88FF7E962143324300D541EF /* Build configuration list for PBXNativeTarget "SugarCube" */;
 			buildPhases = (
+				64BD5782E728979BA7195F84 /* [CP] Check Pods Manifest.lock */,
 				88FF7E7E2143324100D541EF /* Sources */,
 				88FF7E7F2143324100D541EF /* Frameworks */,
 				88FF7E802143324100D541EF /* Resources */,
+				03FBB724CE34F6691C272FD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +186,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03FBB724CE34F6691C272FD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SugarCube/Pods-SugarCube-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/StitchCore/StitchCore.framework",
+				"${BUILT_PRODUCTS_DIR}/StitchCoreRemoteMongoDBService/StitchCoreRemoteMongoDBService.framework",
+				"${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libbson.framework",
+				"${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libmongoc.framework",
+				"${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/MongoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/StitchCoreSDK/StitchCoreSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/StitchRemoteMongoDBService/StitchRemoteMongoDBService.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchCoreRemoteMongoDBService.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libbson.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libmongoc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MongoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchCoreSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchRemoteMongoDBService.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SugarCube/Pods-SugarCube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64BD5782E728979BA7195F84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SugarCube-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88FF7E7E2143324100D541EF /* Sources */ = {
@@ -310,6 +387,7 @@
 		};
 		88FF7E972143324300D541EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22708875A5A55188B20CC245 /* Pods-SugarCube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -328,6 +406,7 @@
 		};
 		88FF7E982143324300D541EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5B0D8AD335BD48657E0BADC /* Pods-SugarCube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

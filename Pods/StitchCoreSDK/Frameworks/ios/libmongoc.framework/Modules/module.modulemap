@@ -1,0 +1,5 @@
+framework module libmongoc [system] {
+        umbrella header "mongoc.h"
+        export *
+        module * { export * }
+        }

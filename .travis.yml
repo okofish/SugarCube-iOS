@@ -1,5 +1,6 @@
 os: osx
 install: pod install --repo-update
+script: echo "Fake build"
 deploy:
   provider: script
   script: echo "Fake deploy"

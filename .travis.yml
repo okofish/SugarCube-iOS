@@ -3,7 +3,7 @@ language: swift
 xcode_workspace: Stitch.xcworkspace
 xcode_scheme: StitchSDK
 script:
-  - pod install
+  - pod install --repo-update
 deploy:
   provider: script
   script: echo "Fake deploy"

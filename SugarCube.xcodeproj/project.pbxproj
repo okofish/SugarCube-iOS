@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30635CD221436CDA001EC7AD /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30635CD121436CDA001EC7AD /* AccountsController.swift */; };
+		30635CD421436D03001EC7AD /* AccountsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30635CD321436D03001EC7AD /* AccountsView.storyboard */; };
 		88FF7E862143324100D541EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E852143324100D541EF /* AppDelegate.swift */; };
 		88FF7E882143324100D541EF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E872143324100D541EF /* art.scnassets */; };
 		88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E892143324100D541EF /* ARViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30635CD121436CDA001EC7AD /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
+		30635CD321436D03001EC7AD /* AccountsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountsView.storyboard; sourceTree = "<group>"; };
 		88FF7E822143324100D541EF /* SugarCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugarCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FF7E852143324100D541EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88FF7E872143324100D541EF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30635CD0214366BB001EC7AD /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				30635CD321436D03001EC7AD /* AccountsView.storyboard */,
+				30635CD121436CDA001EC7AD /* AccountsController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		88FF7E792143324100D541EF = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 		88FF7E842143324100D541EF /* SugarCube */ = {
 			isa = PBXGroup;
 			children = (
+				30635CD0214366BB001EC7AD /* Account */,
 				88FF7E852143324100D541EF /* AppDelegate.swift */,
 				88FF7E872143324100D541EF /* art.scnassets */,
 				88FF7E9B21434B4B00D541EF /* AR */,
@@ -141,6 +155,7 @@
 				88FF7E922143324300D541EF /* LaunchScreen.storyboard in Resources */,
 				88FF7E8F2143324300D541EF /* Assets.xcassets in Resources */,
 				88FF7E8D2143324100D541EF /* ARView.storyboard in Resources */,
+				30635CD421436D03001EC7AD /* AccountsView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +168,7 @@
 			files = (
 				88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */,
 				88FF7E862143324100D541EF /* AppDelegate.swift in Sources */,
+				30635CD221436CDA001EC7AD /* AccountsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

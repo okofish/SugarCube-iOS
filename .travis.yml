@@ -1,7 +1,4 @@
 os: osx
-language: swift
-xcode_workspace: Stitch.xcworkspace
-xcode_scheme: StitchSDK
 install: pod install --repo-update
 deploy:
   provider: script

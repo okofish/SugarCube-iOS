@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30635CD421436D03001EC7AD /* AccountsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30635CD321436D03001EC7AD /* AccountsView.storyboard */; };
 		30635CD821442060001EC7AD /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30635CD721442060001EC7AD /* AccountsController.swift */; };
+		88B2242721442EBF0065308A /* NutritionixAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B2242621442EBF0065308A /* NutritionixAPI.swift */; };
 		88FF7E862143324100D541EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E852143324100D541EF /* AppDelegate.swift */; };
 		88FF7E882143324100D541EF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7E872143324100D541EF /* art.scnassets */; };
 		88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7E892143324100D541EF /* ARViewController.swift */; };
@@ -23,6 +24,7 @@
 		22708875A5A55188B20CC245 /* Pods-SugarCube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SugarCube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SugarCube/Pods-SugarCube.debug.xcconfig"; sourceTree = "<group>"; };
 		30635CD321436D03001EC7AD /* AccountsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountsView.storyboard; sourceTree = "<group>"; };
 		30635CD721442060001EC7AD /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
+		88B2242621442EBF0065308A /* NutritionixAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionixAPI.swift; sourceTree = "<group>"; };
 		88FF7E822143324100D541EF /* SugarCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SugarCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FF7E852143324100D541EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88FF7E872143324100D541EF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				88FF7E99214349A300D541EF /* Main.storyboard */,
 				88FF7E8E2143324300D541EF /* Assets.xcassets */,
 				88FF7E902143324300D541EF /* LaunchScreen.storyboard */,
+				88B2242621442EBF0065308A /* NutritionixAPI.swift */,
 				88FF7E932143324300D541EF /* Info.plist */,
 			);
 			path = SugarCube;
@@ -245,6 +248,7 @@
 			files = (
 				88FF7E8A2143324100D541EF /* ARViewController.swift in Sources */,
 				88FF7E862143324100D541EF /* AppDelegate.swift in Sources */,
+				88B2242721442EBF0065308A /* NutritionixAPI.swift in Sources */,
 				30635CD821442060001EC7AD /* AccountsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

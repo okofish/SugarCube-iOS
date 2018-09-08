@@ -10,8 +10,11 @@ import UIKit
 import SceneKit
 import ARKit
 import Vision
+import StitchCore
 
 class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+    
+    lazy var stitchClient = Stitch.defaultAppClient!
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -110,8 +113,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer!)
         visionQueue.async {
             do {
-                // Release the pixel buffer when done, allowing the next buffer to be processed.
-                defer { self.currentBuffer = nil }
                 try requestHandler.perform([self.classificationRequest])
             } catch {
                 print("Error: Vision request failed with error \"\(error)\"")
@@ -120,8 +121,25 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
     
     func processClassifications(for request: VNRequest, error: Error?) {
-        if let results = request.results as? [VNBarcodeObservation], let observation = results.first {
-            print(observation.payloadStringValue)
+        if
+            let results = request.results as? [VNBarcodeObservation],
+            let observation = results.first,
+            observation.payloadStringValue == nil
+        {
+            NutritionixAPI.getNutritionData(upc: observation.payloadStringValue!) { (err: Error?, data: Document?) in
+                // Release the pixel buffer when done, allowing the next buffer to be processed.
+                defer { self.currentBuffer = nil }
+                
+                guard err == nil else {
+                    print(err)
+                    return
+                }
+                
+                print(data)
+            }
+        } else {
+            // Release the pixel buffer when done, allowing the next buffer to be processed.
+            defer { self.currentBuffer = nil }
         }
         
         /*DispatchQueue.main.async { [weak self] in

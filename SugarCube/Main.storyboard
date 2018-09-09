@@ -59,7 +59,7 @@
                 <viewControllerPlaceholder storyboardName="ARView" id="oPL-YY-QUJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcH-Vy-vaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="-74"/>
+            <point key="canvasLocation" x="722" y="-65"/>
         </scene>
     </scenes>
 </document>

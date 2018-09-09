@@ -62,20 +62,17 @@ class AccountsController: UIViewController {
         Stitch.defaultAppClient!.auth.login(withCredential: credential) { result in
             switch result {
             case .success:
-                print("Yeeeetus")
+                self.EMAIL_INPUT.isHidden = true
+                self.PASSWORD_INPUT.isHidden = true
+                self.PASSWORD_CONFIRM_INPUT.isHidden = true
+                self.LOGIN_BUTTON.isHidden = true
+                self.REGISTER_OPEN_BUTTON.isHidden = true
+                self.REGISTER_BUTTON.isHidden = true
+                self.LOGIN_OPEN_BUTTON.isHidden = true
+                self.LOGOUT_BUTTON.isHidden = false
             case .failure(let error):
                 print(error)
             }
-        }
-        if (Stitch.defaultAppClient!.auth.isLoggedIn) {
-            EMAIL_INPUT.isHidden = true
-            PASSWORD_INPUT.isHidden = true
-            PASSWORD_CONFIRM_INPUT.isHidden = true
-            LOGIN_BUTTON.isHidden = true
-            REGISTER_OPEN_BUTTON.isHidden = true
-            REGISTER_BUTTON.isHidden = true
-            LOGIN_OPEN_BUTTON.isHidden = true
-            LOGOUT_BUTTON.isHidden = false
         }
     }
     @IBOutlet weak var LOGIN_OPEN_BUTTON: UIButton!
@@ -88,15 +85,22 @@ class AccountsController: UIViewController {
     }
     @IBOutlet weak var LOGOUT_BUTTON: UIButton!
     @IBAction func LOGOUT_BUTTON(_ sender: Any) {
-        isLoggedIn = false // TEMP
-        EMAIL_INPUT.isHidden = false
-        PASSWORD_INPUT.isHidden = false
-        PASSWORD_CONFIRM_INPUT.isHidden = true
-        LOGIN_BUTTON.isHidden = false
-        REGISTER_OPEN_BUTTON.isHidden = false
-        REGISTER_BUTTON.isHidden = true
-        LOGIN_OPEN_BUTTON.isHidden = true
-        LOGOUT_BUTTON.isHidden = true
+        Stitch.defaultAppClient!.auth.logout({(result: StitchResult<Void>) in
+            switch result {
+            case .success:
+                debugPrint("YEEET")
+                self.EMAIL_INPUT.isHidden = false
+                self.PASSWORD_INPUT.isHidden = false
+                self.PASSWORD_CONFIRM_INPUT.isHidden = true
+                self.LOGIN_BUTTON.isHidden = false
+                self.REGISTER_OPEN_BUTTON.isHidden = false
+                self.REGISTER_BUTTON.isHidden = true
+                self.LOGIN_OPEN_BUTTON.isHidden = true
+                self.LOGOUT_BUTTON.isHidden = true
+            case .failure(let error):
+                debugPrint(error)
+            }
+        })
     }
     
     
@@ -118,6 +122,7 @@ class AccountsController: UIViewController {
                 fromFactory: userPasswordClientFactory).register(withEmail:email, withPassword:password) { result in
                     switch result {
                     case .success:
+                        debugPrint(Stitch.defaultAppClient!.auth.currentUser)
                         self.EMAIL_INPUT.isHidden = false
                         self.PASSWORD_INPUT.isHidden = false
                         self.PASSWORD_CONFIRM_INPUT.isHidden = true

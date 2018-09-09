@@ -14,6 +14,9 @@ import StitchCore
 
 class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
+    let sugarDensity = 0.630119 // cm3/g
+    let sodiumDensity = 2.0538
+    
     lazy var stitchClient = Stitch.defaultAppClient!
 
     @IBOutlet var sceneView: ARSCNView!
@@ -34,10 +37,17 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/SugarSalt.scn")!
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // 1 meter -> 1 centimeter
+        //sceneView.scene.rootNode.scale = [0.01, 0.01, 0.01]
+        //sceneView.scene.rootNode.simdScale = [0.01, 0.01, 0.01]
+        
+        setSugarWeightInGrams(value: nil)
+        setSodiumWeightInGrams(value: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,14 +74,74 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     // MARK: - ARSCNViewDelegate
     
-/*
+
     // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+    /*func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
      
         return node
+    }*/
+
+    
+    
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        print("Got tap")
+        if sender.state == .ended {
+            let hitResults = sceneView.hitTest(sender.location(in: sceneView), types: [.estimatedHorizontalPlane])
+            if hitResults.count > 0 {
+                let targetHit = hitResults[0]
+                
+                guard let rowNode = sceneView.scene.rootNode.childNode(withName: "RowNode", recursively: true) else {
+                    print("Could not find row node")
+                    return
+                }
+                
+                rowNode.simdWorldTransform = targetHit.worldTransform
+                rowNode.simdScale = [0.1, 0.1, 0.1]
+            } else {
+                print("Could not find any hits")
+            }
+        }
     }
-*/
+    
+    func setSugarWeightInGrams(value: Double?) {
+        guard let sugarNode = sceneView.scene.rootNode.childNode(withName: "SugarGroup", recursively: true) else {
+            print("Could not find sugar node")
+            return
+        }
+        
+        guard value != nil else {
+            print("Sugar value is nil; hiding")
+            sugarNode.isHidden = true
+            return
+        }
+        let volume = value! * sugarDensity // cm3
+        let sideLength = cbrt(volume) // cm
+        let scaleMultiplier = Float(sideLength / 100)
+        sugarNode.simdScale = [scaleMultiplier, scaleMultiplier, scaleMultiplier]
+        sugarNode.isHidden = false
+        print("Sugar set to " + String(sideLength) + "cm/side")
+    }
+    
+    func setSodiumWeightInGrams(value: Double?) {
+        guard let saltNode = sceneView.scene.rootNode.childNode(withName: "SaltGroup", recursively: true) else {
+            print("Could not find salt node")
+            return
+        }
+        
+        guard value != nil else {
+            print("Sodium value is nil; hiding")
+            saltNode.isHidden = true
+            return
+        }
+        let volume = value! * sodiumDensity // cm3
+        let sideLength = cbrt(volume) // cm
+        let scaleMultiplier = Float(sideLength / 100)
+        saltNode.simdScale = [scaleMultiplier, scaleMultiplier, scaleMultiplier]
+        saltNode.isHidden = false
+        print("Salt set to " + String(sideLength) + "cm/side")
+    }
+    
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
@@ -102,7 +172,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             self.processClassifications(for: finishedRequest, error: error)
         }
         // Use CPU for Vision processing to ensure that there are adequate GPU resources for rendering.
-        //request.usesCPUOnly = true
+        request.usesCPUOnly = true
         
         return request
     }()
@@ -124,18 +194,23 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         if
             let results = request.results as? [VNBarcodeObservation],
             let observation = results.first,
-            observation.payloadStringValue == nil
+            observation.payloadStringValue != nil
         {
-            NutritionixAPI.getNutritionData(upc: observation.payloadStringValue!) { (err: Error?, data: Document?) in
+            NutritionixAPI.getNutritionData(upc: observation.payloadStringValue!, testMode: true) { (err: Error?, optFood: Document?) in
                 // Release the pixel buffer when done, allowing the next buffer to be processed.
                 defer { self.currentBuffer = nil }
                 
-                guard err == nil else {
+                guard err == nil, let food = optFood else {
                     print(err)
                     return
                 }
                 
-                print(data)
+                print(food)
+                
+                self.setSugarWeightInGrams(value: food["nf_sugars"] as? Double)
+                
+                self.setSodiumWeightInGrams(value: food["nf_sodium"] as? Double)
+                
             }
         } else {
             // Release the pixel buffer when done, allowing the next buffer to be processed.

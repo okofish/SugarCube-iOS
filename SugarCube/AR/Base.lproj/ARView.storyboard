@@ -21,6 +21,10 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-d2-t5E" userLabel="Scene View">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Zq2-0L-1rK" appends="YES" id="hSp-Cu-hfZ"/>
+                                </connections>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeY-ad-MfB">
                                 <rect key="frame" x="10" y="10" width="30" height="38"/>
@@ -30,11 +34,12 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="goBack" destination="SZV-WD-TEh" eventType="touchUpInside" id="4q5-uH-sYB"/>
+                                    <segue destination="VhM-M0-hlj" kind="show" id="rne-8p-IWk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qeY-ad-MfB" firstAttribute="top" secondItem="0WM-yG-VQh" secondAttribute="top" constant="10" id="acM-E0-mgB"/>
                             <constraint firstItem="qeY-ad-MfB" firstAttribute="leading" secondItem="0WM-yG-VQh" secondAttribute="leading" constant="10" id="g1K-h5-HQV"/>
@@ -46,7 +51,20 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Zq2-0L-1rK">
+                    <connections>
+                        <action selector="handleTap:" destination="BV1-FR-VrT" id="Kbt-hf-ysh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+        </scene>
+        <!--Main-->
+        <scene sceneID="O7e-lX-ZAl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="VhM-M0-hlj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnl-IJ-Kga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="53"/>
         </scene>
     </scenes>
 </document>

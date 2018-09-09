@@ -45,6 +45,9 @@
                             <constraint firstItem="qeY-ad-MfB" firstAttribute="leading" secondItem="0WM-yG-VQh" secondAttribute="leading" constant="10" id="g1K-h5-HQV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0WM-yG-VQh"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kof-Mm-Q8Q" appends="YES" id="O1S-6h-i54"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="8NE-d2-t5E" id="qnL-KO-dzR"/>
@@ -56,6 +59,11 @@
                         <action selector="handleTap:" destination="BV1-FR-VrT" id="Kbt-hf-ysh"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="kof-Mm-Q8Q">
+                    <connections>
+                        <segue destination="GTa-N8-fAd" kind="show" id="zWW-37-65T"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
         </scene>
         <!--Main-->
@@ -65,6 +73,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnl-IJ-Kga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="585" y="53"/>
+        </scene>
+        <!--AccountsView-->
+        <scene sceneID="cgw-J5-rre">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AccountsView" id="GTa-N8-fAd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvR-ig-WCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="378"/>
         </scene>
     </scenes>
 </document>
